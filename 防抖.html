@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>在一段时间内高频点我（防抖）</button>
+    
+    <script>
+        var btn = document.querySelector('button');
+        var timer = null;
+        var clickCount = 0; // 用于记录点击次数
+
+        btn.onclick = function () {
+            clickCount++; // 每次点击，点击次数加1
+            console.log(`第${clickCount}次点击，正在清除之前的定时器...`);
+            clearTimeout(timer);
+            console.log(`第${clickCount}次点击，已清除，正在设置新的定时器...`);
+            timer = setTimeout(() => {
+                console.log("我触发了");
+                clickCount = 0; // 触发后重置点击次数
+            }, 1000);
+            console.log(`第${clickCount}次点击，定时器已设置，等待 ${500} 毫秒后执行。`);
+        }
+    </script>
+</body>
+</html>
