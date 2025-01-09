@@ -88,6 +88,16 @@ Java的垃圾回收机制是JVM（Java虚拟机）自动内存管理的一部分
 ### 序列化是什么？
 序列化是一种将对象转换成字节序列的过程，用于解决在对对象流进行读写操作时所引发的问题。序列化可以将对象的状态写在流里进行网络传输，或者保存到文件、数据库等系统里，并在需要的时候把该流读取出来重新构造成一个相同的对象。
 
+//序列化
+String jsonString = JSONObject.toJSONString(lockAndUnlockAccount);
+
+//反序列化
+//利用JSONObject将content字符串转为lockAndUnlockAccount实体类对象
+JSONObject jsonObjectContent = new JSONObject(docontent);
+LockAndUnlockUserAccount lockAndUnlockAccount = jsonObjectContent.toBean(LockAndUnlockUserAccount.class);
+
+
+
 ### 缓存穿透
 缓存穿透指缓存和数据库均没有需要查询的数据，攻击者不断发送这种请求，使数据库压力过大。
 
@@ -99,6 +109,4 @@ Java的垃圾回收机制是JVM（Java虚拟机）自动内存管理的一部分
 一个系统，各个组件分别部署在不同服务器，彼此通过网络通信和协调的系统
 
 ### 分布式系统和 微服务系统的区别
-微服务可以多个组件可以部署在一个服务器，分部署侧重一个系统部署的方式，微服务是一种系统的架构。
-
-### JKD1.8新特性
+微服务可以多个组件可以部署在一个服务器，分部署侧重一个系统部署的方式，微服务是一种系统的架构
